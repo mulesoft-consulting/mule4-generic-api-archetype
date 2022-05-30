@@ -15,9 +15,9 @@
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<project.name.version>v1</project.name.version>
 		<project.gatekeeper.type>strict</project.gatekeeper.type>
-		<project.name.suffix>-${mule.env.lower}</project.name.suffix>
-		<mule.env>LOCAL</mule.env>
-		<secure.key>0123456701234567</secure.key>
+		<project.name.suffix>-${project.env.lower}</project.name.suffix>
+		<project.env>LOCAL</project.env>
+		<project.secure.key>0123456701234567</project.secure.key>
 		
 		<app.runtime>4.3.0</app.runtime>
 		<mule.maven.plugin.version>3.4.2</mule.maven.plugin.version>
@@ -68,7 +68,7 @@
 		<profile>
 			<id>build_non_prod</id>
 			<properties>
-				<project.name.suffix>-${mule.env.lower}</project.name.suffix>
+				<project.name.suffix>-${project.env.lower}</project.name.suffix>
 			</properties>
 		</profile>
 		<profile>
@@ -133,10 +133,10 @@
 						<environment>${deploy.cloudhub.env}</environment>
 						<deploymentTimeout>${deploy.cloudhub.timeout}</deploymentTimeout>
 						<properties>
-							<mule.env>${mule.env}</mule.env>
+							<project.env>${project.env}</project.env>
 							<anypoint.platform.client_id>${platform.client_id}</anypoint.platform.client_id>
 							<anypoint.platform.client_secret>${platform.client_secret}</anypoint.platform.client_secret>
-							<secure.key>${secure.key}</secure.key>
+							<project.secure.key>${project.secure.key}</project.secure.key>
 							<anypoint.platform.base_uri>${anypoint.base_uri}</anypoint.platform.base_uri>
 							<anypoint.platform.analytics_base_uri>${anypoint.analytics_base_uri}</anypoint.platform.analytics_base_uri>
 							<anypoint.platform.gatekeeper>${project.gatekeeper.type}</anypoint.platform.gatekeeper>
@@ -166,8 +166,8 @@
 						<deploymentTimeout>${deploy.rtf.timeout}</deploymentTimeout>
 						<properties>
 							<!--  All variables deploy.* must be provided on deploy command line dynamically -->
-							<mule.env>${mule.env}</mule.env>
-							<secure.key>${secure.key}</secure.key>
+							<project.env>${project.env}</project.env>
+							<project.secure.key>${project.secure.key}</project.secure.key>
 							<anypoint.platform.base_uri>${anypoint.base_uri}</anypoint.platform.base_uri>
 							<anypoint.platform.analytics_base_uri>${anypoint.analytics_base_uri}</anypoint.platform.analytics_base_uri>
 							<anypoint.platform.client_id>${platform.client_id}</anypoint.platform.client_id>
@@ -216,16 +216,16 @@
 				<version>3.2.0</version>
 				<executions>
 					<execution>
-						<id>mule.env-lowercase-variable</id>
+						<id>project.env-lowercase-variable</id>
 						<phase>initialize</phase>
 						<goals>
 							<goal>regex-property</goal>
 						</goals>
 						<configuration>
-							<name>mule.env.lower</name>
-							<value>${mule.env}</value>
-							<regex>${mule.env}</regex>
-							<replacement>${mule.env}</replacement>
+							<name>project.env.lower</name>
+							<value>${project.env}</value>
+							<regex>${project.env}</regex>
+							<replacement>${project.env}</replacement>
 							<toLowerCase>true</toLowerCase>
 							<failIfNoMatch>false</failIfNoMatch>
 							<fileSet />
