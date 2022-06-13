@@ -4,6 +4,9 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   
     <requiredProperties>
+      <requiredProperty key="version">
+        <defaultValue>0.0.1-SNAPSHOT</defaultValue>
+      </requiredProperty>
       <requiredProperty key="description">
         <defaultValue>Mule API</defaultValue>
       </requiredProperty>
